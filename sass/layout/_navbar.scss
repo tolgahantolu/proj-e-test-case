@@ -1,0 +1,58 @@
+.navbar {
+  width: 100%;
+  height: 10rem;
+  background-color: $color-blue;
+  color: $color-white;
+
+  a,
+  a:hover {
+    color: $color-white;
+  }
+
+  &__logo {
+    width: 15rem;
+    height: 7.5rem;
+  }
+
+  &__membership,
+  &__cart,
+  &__category {
+    font-size: 1.8rem;
+
+    i {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__form {
+    flex: 1;
+
+    input {
+      width: 100%;
+      height: 4rem;
+      border: none;
+      outline: none;
+
+      &,
+      &:focus {
+        background-color: $color-blue-light;
+      }
+
+      &:focus {
+        font-size: 1.3rem;
+        color: $color-white;
+      }
+    }
+  }
+
+  &__placeholder {
+    pointer-events: none;
+    font-size: 1.3rem;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.navbar-toggler {
+  font-size: 1.6rem !important;
+  background-color: $color-white !important;
+}
