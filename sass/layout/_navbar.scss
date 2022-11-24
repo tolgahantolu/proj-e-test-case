@@ -4,6 +4,18 @@
   background-color: $color-blue;
   color: $color-white;
 
+  &__offcanvas {
+    display: none !important;
+
+    &-content {
+      background-color: $color-blue !important;
+    }
+
+    &-closebtn {
+      font-size: 1.8rem;
+    }
+  }
+
   a,
   a:hover {
     color: $color-white;
@@ -55,4 +67,25 @@
 .navbar-toggler {
   font-size: 1.6rem !important;
   background-color: $color-white !important;
+}
+
+@media screen and (max-width: 992px) {
+  .navbar {
+    &__desktop {
+      display: none !important;
+    }
+
+    &__offcanvas {
+      display: flex !important;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .navbar {
+    &__logo {
+      width: 12rem;
+      height: 6rem;
+    }
+  }
 }

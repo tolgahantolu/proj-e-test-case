@@ -1,0 +1,8 @@
+@mixin blueHover {
+  color: $color-blue;
+  transition: all 0.5s ease;
+
+  &:hover {
+    color: $color-blue-hover;
+  }
+}

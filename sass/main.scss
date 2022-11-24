@@ -1,10 +1,17 @@
 //abstracts
 @import "./abstracts/variables";
+@import "./abstracts/mixins";
 
 // base
 @import "./base/base.scss";
 @import "./base/typography.scss";
+@import "./base/utilities";
+
+//components
+@import "./components/product";
+@import "./components/swiper";
 
 // layout
-@import "./layout/navbar";
+@import "./layout/footer";
 @import "./layout/header";
+@import "./layout/navbar";
