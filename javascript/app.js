@@ -102,7 +102,7 @@ const createHtml = (forWhat, item, toWhere) => {
 				${item.productCount >= 5 ? "" : `Yalnızca ${item.productCount} ürün kaldı`}</p>
 			</p>
 			<small class="text-uppercase rounded px-3 py-2">
-			${item.samedayshipping ? "bugün kargoda" : ""}	
+			${item.samedayshipping ? "bugün kargoda" : ""}
 			</small>
 
 			<div class="product__addtocart w-100 d-flex position-absolute bottom-0 left-0">
@@ -127,3 +127,118 @@ const getLocalStorage = () => {
   count = countdata == null ? 0 : countdata;
   navbarCartCount.textContent = count;
 };
+
+// !OOP ----
+//class Vatan {
+//  #count = 0;
+//
+//  constructor() {
+//    window.addEventListener("DOMContentLoaded", async () => {
+//      this._getLocalStorage();
+//
+//      await this._fetchData(featuredProductsData, "list", featuredProducts);
+//      await this._fetchData(
+//        bestSellerProductsData,
+//        "slider",
+//        bestSellerProductsSlider
+//      );
+//    });
+//
+//    document.addEventListener("click", function (e) {
+//      if (e.target && e.target.id == "btnAddToCart") {
+//        this.#count += 1;
+//        navbarCartCount.textContent = this.#count;
+//        this._setLocalStorage(this.#count);
+//      }
+//    });
+//  }
+//
+//  _fetchData = async (url, forWhat, toWhere) => {
+//    const data = await (await fetch(url)).json();
+//
+//    data.map((item) => {
+//      this._createHtml(forWhat, item, toWhere);
+//    });
+//  };
+//
+//  _createHtml = async (forWhat, item, toWhere) => {
+//    let html = undefined;
+//    if (forWhat == "slider") {
+//      html = `
+//		<div class="bestSeller__swiper-slide swiper-slide">
+//			<div class="product overflow-hidden position-relative">
+//				<small class="text-uppercase fw-bolder">Web'e Özel</small>
+//				<img src="${item.img}"
+//					alt="product image" class="my-4">
+//				<div class="d-flex align-items-center gap-1">
+//					<span><i class="fa-solid fa-star"></i>${item.rating}</span>
+//					<span>(${item.comment} Yorum)</span>
+//				</div>
+//				<p class="product__pcode text-uppercase mt-4">${item.code}</p>
+//				<h5 class="product__title text-uppercase text-center mt-1">${item.title}</h5>
+//				<h1 class="product__price my-2">₺${item.price}</h1>
+//				<p class="product__count text-uppercase fw-bolder">
+//				${
+//          item.productCount >= 5 || item.productCount == undefined
+//            ? ""
+//            : `Yalnızca ${item.productCount} ürün kaldı`
+//        }</p>
+//				<small class="text-uppercase rounded px-3 py-2">
+//					${item.samedayshipping ? "bugün kargoda" : ""}
+//				</small>
+//
+//				<div class="product__addtocart w-100 d-flex position-absolute bottom-0 left-0">
+//					<button type="button">
+//						<i class="fa-solid fa-right-left"></i>
+//					</button>
+//					<button type="button" class="text-uppercase fw-bolder" id="btnAddToCart">Sepete
+//						ekle</button>
+//				</div>
+//			</div>
+//		</div>
+//	`;
+//    } else {
+//      html = `
+//		<div class="product product--featured overflow-hidden position-relative">
+//			<small class="text-uppercase fw-bolder">Web'e Özel</small>
+//			<img src="${item.img}"
+//				alt="product image" class="my-4">
+//			<div class="d-flex align-items-center gap-1">
+//				<span><i class="fa-solid fa-star"></i>${item.rating}</span>
+//				<span>(${item.comment} Yorum)</span>
+//			</div>
+//			<p class="product__pcode text-uppercase mt-4">${item.code}</p>
+//			<h5 class="product__title text-uppercase text-center mt-1">${item.title}</h5>
+//			<h1 class="product__price my-2">₺${item.price}</h1>
+//			<p class="product__count text-uppercase fw-bolder">
+//				${item.productCount >= 5 ? "" : `Yalnızca ${item.productCount} ürün kaldı`}</p>
+//			</p>
+//			<small class="text-uppercase rounded px-3 py-2">
+//			${item.samedayshipping ? "bugün kargoda" : ""}
+//			</small>
+//
+//			<div class="product__addtocart w-100 d-flex position-absolute bottom-0 left-0">
+//				<button type="button">
+//					<i class="fa-solid fa-right-left"></i>
+//				</button>
+//				<button type="button" class="text-uppercase fw-bolder" id="btnAddToCart">Sepete
+//					ekle</button>
+//			</div>
+//		</div>
+//  	`;
+//    }
+//    return toWhere.insertAdjacentHTML("afterbegin", html);
+//  };
+//
+//  _setLocalStorage(data) {
+//    localStorage.setItem(`cartcount`, JSON.stringify(data));
+//  }
+//
+//  _getLocalStorage() {
+//    const countdata = JSON.parse(localStorage.getItem(`cartcount`));
+//    this.#count = countdata == null ? 0 : countdata;
+//    navbarCartCount.textContent = this.#count;
+//  }
+//}
+//
+//const app = new Vatan();
