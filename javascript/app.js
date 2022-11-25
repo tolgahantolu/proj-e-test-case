@@ -26,7 +26,7 @@ input.addEventListener("focusout", () => {
 
 let count = 0;
 window.addEventListener("DOMContentLoaded", async () => {
-  await getLocalStorage();
+  getLocalStorage();
 
   await fetchData(featuredProductsData, "list", featuredProducts);
   await fetchData(bestSellerProductsData, "slider", bestSellerProductsSlider);
