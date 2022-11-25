@@ -1,4 +1,10 @@
 .footer {
+  .container {
+    @include respond(tab-port) {
+      justify-content: center !important;
+    }
+  }
+
   &__alt {
     border-top: 1px solid $color-line;
   }
@@ -7,6 +13,10 @@
     font-size: 1.2rem;
     color: $color-text-secondary;
     line-height: 1.5rem;
+
+    @include respond(tab-port) {
+      text-align: center;
+    }
   }
 
   &__payment {
@@ -14,20 +24,9 @@
       max-width: 4rem;
       max-height: 8rem;
     }
-  }
-}
 
-@media screen and (max-width: 576px) {
-  .footer {
-    .container {
-      justify-content: center !important;
-    }
-
-    &__payment {
+    @include respond(tab-port) {
       margin-top: 1rem;
-    }
-    &__copy {
-      text-align: center;
     }
   }
 }

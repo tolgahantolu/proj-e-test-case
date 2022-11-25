@@ -10,6 +10,22 @@
 
   &--featured {
     max-width: 20%;
+
+    @include respond(desk) {
+      max-width: 25%;
+    }
+
+    @include respond(tab-land) {
+      max-width: 33.333%;
+    }
+
+    @include respond(tab-port) {
+      max-width: 50%;
+    }
+
+    @include respond(phone) {
+      max-width: 100%;
+    }
   }
 
   &:hover {
@@ -102,37 +118,5 @@
 
   &:hover &__addtocart {
     transform: translateY(0);
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .product {
-    &--featured {
-      max-width: 25%;
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .product {
-    &--featured {
-      max-width: 33.333%;
-    }
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .product {
-    &--featured {
-      max-width: 50%;
-    }
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .product {
-    &--featured {
-      max-width: 100%;
-    }
   }
 }

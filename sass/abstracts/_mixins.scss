@@ -6,3 +6,31 @@
     color: $color-blue-hover;
   }
 }
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 20em) {
+      //1em = 16px
+      //320px == 320px/16px => 20em
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 36em) {
+      //576px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    //768px
+    @media only screen and (max-width: 48em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desk {
+    @media only screen and (max-width: 62em) {
+      //992px
+      @content;
+    }
+  }
+}

@@ -7,12 +7,22 @@
   &__offcanvas {
     display: none !important;
 
+    @include respond(desk) {
+      display: flex !important;
+    }
+
     &-content {
       background-color: $color-blue !important;
     }
 
     &-closebtn {
       font-size: 1.8rem;
+    }
+  }
+
+  &__desktop {
+    @include respond(desk) {
+      display: none !important;
     }
   }
 
@@ -24,6 +34,11 @@
   &__logo {
     width: 15rem;
     height: 7.5rem;
+
+    @include respond(tab-port) {
+      width: 12rem;
+      height: 6rem;
+    }
   }
 
   &__membership,
@@ -33,6 +48,21 @@
 
     i {
       font-size: 1.6rem;
+    }
+  }
+
+  &__cart {
+    &-count {
+      font-size: 1rem;
+      width: 2rem;
+      height: 2rem;
+      line-height: 2rem;
+      text-align: center;
+      border-radius: 50%;
+      background-color: $color-black-light;
+      color: $color-white;
+      right: -1.2rem;
+      bottom: -1rem;
     }
   }
 
@@ -67,25 +97,4 @@
 .navbar-toggler {
   font-size: 1.6rem !important;
   background-color: $color-white !important;
-}
-
-@media screen and (max-width: 992px) {
-  .navbar {
-    &__desktop {
-      display: none !important;
-    }
-
-    &__offcanvas {
-      display: flex !important;
-    }
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .navbar {
-    &__logo {
-      width: 12rem;
-      height: 6rem;
-    }
-  }
 }

@@ -35,6 +35,18 @@
 .swiper__slider-button_next {
   &-header {
     right: 8rem !important;
+
+    @include respond(tab-land) {
+      right: 4rem !important;
+    }
+
+    @include respond(tab-port) {
+      right: 1rem !important;
+    }
+
+    @include respond(phone) {
+      display: none !important;
+    }
   }
 
   &-bestSeller {
@@ -45,6 +57,18 @@
 .swiper__slider-button_prev {
   &-header {
     left: 8rem !important;
+
+    @include respond(tab-land) {
+      left: 4rem !important;
+    }
+
+    @include respond(tab-port) {
+      left: 1rem !important;
+    }
+
+    @include respond(phone) {
+      display: none !important;
+    }
   }
 
   &-bestSeller {
@@ -72,48 +96,6 @@
     &-active {
       opacity: 100% !important;
       background-color: $color-white !important;
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .swiper__slider-button_next {
-    &-header {
-      right: 4rem !important;
-    }
-  }
-
-  .swiper__slider-button_prev {
-    &-header {
-      left: 4rem !important;
-    }
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .swiper__slider-button_next {
-    &-header {
-      right: 1rem !important;
-    }
-  }
-
-  .swiper__slider-button_prev {
-    &-header {
-      left: 1rem !important;
-    }
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .swiper__slider-button_next {
-    &-header {
-      display: none !important;
-    }
-  }
-
-  .swiper__slider-button_prev {
-    &-header {
-      display: none !important;
     }
   }
 }

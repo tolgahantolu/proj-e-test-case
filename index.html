@@ -59,7 +59,10 @@
 				<a href="/"
 					class="navbar__cart d-flex gap-3 justify-content-center align-items-center text-decoration-none">
 					<span>Sepetim</span>
-					<i class="fa-solid fa-cart-shopping"></i>
+					<div class="position-relative">
+						<i class="fa-solid fa-cart-shopping"></i>
+						<span class="navbar__cart-count d-block position-absolute"></span>
+					</div>
 				</a>
 			</div>
 		</div>
@@ -88,22 +91,25 @@
 					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 						<li class="nav-item mt-2">
 							<div class="navbar__category d-flex gap-3 justify-content-start align-items-center">
-								<i class="fa-solid fa-bars"></i>
 								<span>Kategoriler</span>
+								<i class="fa-solid fa-bars"></i>
 							</div>
 						</li>
 						<li class="nav-item mt-2">
 							<a href="/"
 								class="navbar__membership d-flex gap-3 justify-content-start align-items-center text-decoration-none">
-								<i class="fa-solid fa-user"></i>
 								<span>Üyelik</span>
+								<i class="fa-solid fa-user"></i>
 							</a>
 						</li>
 						<li class="nav-item mt-2">
 							<a href="/"
 								class="navbar__cart d-flex gap-3 justify-content-start align-items-center text-decoration-none">
-								<i class="fa-solid fa-cart-shopping"></i>
 								<span>Sepetim</span>
+								<div class="position-relative">
+									<i class="fa-solid fa-cart-shopping"></i>
+									<span class="navbar__cart-count d-block position-absolute">2</span>
+								</div>
 							</a>
 						</li>
 					</ul>
@@ -167,30 +173,7 @@
 
 				<!-- featured products -->
 				<div data-uri="./data/relatedProducts.json" class="featured__products d-flex flex-row flex-wrap">
-					<!--<div class="featured__product overflow-hidden position-relative">
-						<small class="text-uppercase fw-bolder">Web'e Özel</small>
-						<img src="https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/113138-2_small.jpg"
-							alt="product image" class="my-4">
-						<div class="d-flex align-items-center gap-1">
-							<span><i class="fa-solid fa-star"></i>4.6</span>
-							<span>(122 Yorum)</span>
-						</div>
-						<p class="featured__product-pcode text-uppercase mt-4">PA2N006TR</p>
-						<h5 class="featured__product-title text-uppercase text-center mt-1">iphone 6 16gb
-							akıllı
-							telefon uzay grisi</h5>
-						<h1 class="featured__product-price my-2">₺1.399</h1>
-						<p class="featured__product-count text-uppercase fw-bolder">yalnızca 2 ürün kaldı</p>
-						<small class="text-uppercase rounded px-3 py-2">bugün kargoda</small>
-
-						<div class="featured__product-addtocart w-100 d-flex position-absolute bottom-0 left-0">
-							<button type="button">
-								<i class="fa-solid fa-right-left"></i>
-							</button>
-							<button type="button" class="text-uppercase fw-bolder">Sepete
-								ekle</button>
-						</div>
-					</div>-->
+					<!-- featured products list -->
 				</div>
 			</div>
 		</section>
@@ -210,33 +193,7 @@
 				<div data-uri="./data/bestSeller.json" class="bestseller__products d-flex flex-row flex-wrap">
 					<div class="bestSeller__swiper swiper bestSellerSlider">
 						<div class="bestSeller__swiper-wrapper swiper-wrapper">
-
-							<!--<div class="bestSeller__swiper-slide swiper-slide">
-								<div class="product overflow-hidden position-relative">
-									<small class="text-uppercase fw-bolder">Web'e Özel</small>
-									<img src="https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/113138-2_small.jpg"
-										alt="product image" class="my-4">
-									<div class="d-flex align-items-center gap-1">
-										<span><i class="fa-solid fa-star"></i>${item.rating}</span>
-										<span>(${item.comment} Yorum)</span>
-									</div>
-									<p class="product__pcode text-uppercase mt-4">${item.code}</p>
-									<h5 class="product__title text-uppercase text-center mt-1">${item.title}</h5>
-									<h1 class="product__price my-2">₺${item.price}</h1>
-									<p class="product__count text-uppercase fw-bolder">yalnızca 2 ürün kaldı</p>
-									<small class="text-uppercase rounded px-3 py-2">
-										${item.samedayshipping ? "bugün kargoda" : ""}
-									</small>
-
-									<div class="product__addtocart w-100 d-flex position-absolute bottom-0 left-0">
-										<button type="button">
-											<i class="fa-solid fa-right-left"></i>
-										</button>
-										<button type="button" class="text-uppercase fw-bolder">Sepete
-											ekle</button>
-									</div>
-								</div>
-							</div>-->
+							<!-- best seller products slider -->
 						</div>
 
 						<div
@@ -432,83 +389,7 @@
 	<!-- Swiper JS -->
 	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-	<script>
-		var swiper = new Swiper(".headerSlider", {
-			slidesPerView: 4,
-			spaceBetween: 10,
-			loop: true,
-			pagination: {
-				el: ".swiper-pagination",
-				clickable: true,
-			},
-			navigation: {
-				nextEl: ".swiper-button-next",
-				prevEl: ".swiper-button-prev",
-			},
-			breakpoints: {
-				250: {
-					slidesPerView: 1,
-					spaceBetween: 10,
-				},
-				320: {
-					slidesPerView: 1,
-					spaceBetween: 10,
-				},
-				576: {
-					slidesPerView: 1,
-					spaceBetween: 10,
-				},
-				640: {
-					slidesPerView: 1,
-					spaceBetween: 10,
-				},
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 10,
-				},
-				1024: {
-					slidesPerView: 3,
-					spaceBetween: 10,
-				},
-			},
-		});
-
-		var swiper = new Swiper(".bestSellerSlider", {
-			slidesPerView: 5,
-			spaceBetween: 0,
-			loop: true,
-			navigation: {
-				nextEl: ".swiper-button-next",
-				prevEl: ".swiper-button-prev",
-			},
-			breakpoints: {
-				250: {
-					slidesPerView: 1,
-					spaceBetween: 10,
-				},
-				320: {
-					slidesPerView: 1,
-					spaceBetween: 10,
-				},
-				576: {
-					slidesPerView: 1,
-					spaceBetween: 10,
-				},
-				640: {
-					slidesPerView: 1,
-					spaceBetween: 0,
-				},
-				768: {
-					slidesPerView: 3,
-					spaceBetween: 0,
-				},
-				1024: {
-					slidesPerView: 5,
-					spaceBetween: 0,
-				},
-			},
-		});
-	</script>
+	<script src="./javascript/swiper.js"></script>
 
 </body>
 

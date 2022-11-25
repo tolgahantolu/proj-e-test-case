@@ -1,3 +1,5 @@
+"use strict";
+
 // select elements
 const input = document.querySelector(".navbar__input");
 const inputPlaceholder = document.querySelector(".navbar__placeholder");
@@ -5,6 +7,7 @@ const featuredProducts = document.querySelector(".featured__products");
 const bestSellerProductsSlider = document.querySelector(
   ".bestSeller__swiper-wrapper"
 );
+const navbarCartCount = document.querySelector(".navbar__cart-count");
 
 // select dataset
 const featuredProductsData = document.querySelector(".featured__products")
@@ -12,7 +15,7 @@ const featuredProductsData = document.querySelector(".featured__products")
 const bestSellerProductsData = document.querySelector(".bestseller__products")
   .dataset.uri;
 
-// events
+// event listeners
 input.addEventListener("focus", () => {
   inputPlaceholder.classList.add("d-none");
 });
@@ -21,10 +24,20 @@ input.addEventListener("focusout", () => {
   inputPlaceholder.classList.add("d-flex");
 });
 
+let count = 0;
 window.addEventListener("DOMContentLoaded", async () => {
-  fetchData(featuredProductsData, "list", featuredProducts);
+  await getLocalStorage();
 
-  fetchData(bestSellerProductsData, "slider", bestSellerProductsSlider);
+  await fetchData(featuredProductsData, "list", featuredProducts);
+  await fetchData(bestSellerProductsData, "slider", bestSellerProductsSlider);
+});
+
+document.addEventListener("click", function (e) {
+  if (e.target && e.target.id == "btnAddToCart") {
+    count += 1;
+    navbarCartCount.textContent = count;
+    setLocalStorage(count);
+  }
 });
 
 // functions
@@ -52,7 +65,12 @@ const createHtml = (forWhat, item, toWhere) => {
 				<p class="product__pcode text-uppercase mt-4">${item.code}</p>
 				<h5 class="product__title text-uppercase text-center mt-1">${item.title}</h5>
 				<h1 class="product__price my-2">₺${item.price}</h1>
-				<p class="product__count text-uppercase fw-bolder">yalnızca 2 ürün kaldı</p>
+				<p class="product__count text-uppercase fw-bolder">
+				${
+          item.productCount >= 5 || item.productCount == undefined
+            ? ""
+            : `Yalnızca ${item.productCount} ürün kaldı`
+        }</p>
 				<small class="text-uppercase rounded px-3 py-2">
 					${item.samedayshipping ? "bugün kargoda" : ""}
 				</small>
@@ -61,7 +79,7 @@ const createHtml = (forWhat, item, toWhere) => {
 					<button type="button">
 						<i class="fa-solid fa-right-left"></i>
 					</button>
-					<button type="button" class="text-uppercase fw-bolder">Sepete
+					<button type="button" class="text-uppercase fw-bolder" id="btnAddToCart">Sepete
 						ekle</button>
 				</div>
 			</div>
@@ -80,7 +98,9 @@ const createHtml = (forWhat, item, toWhere) => {
 			<p class="product__pcode text-uppercase mt-4">${item.code}</p>
 			<h5 class="product__title text-uppercase text-center mt-1">${item.title}</h5>
 			<h1 class="product__price my-2">₺${item.price}</h1>
-			<p class="product__count text-uppercase fw-bolder">yalnızca 2 ürün kaldı</p>
+			<p class="product__count text-uppercase fw-bolder">
+				${item.productCount >= 5 ? "" : `Yalnızca ${item.productCount} ürün kaldı`}</p>
+			</p>
 			<small class="text-uppercase rounded px-3 py-2">
 			${item.samedayshipping ? "bugün kargoda" : ""}	
 			</small>
@@ -89,11 +109,21 @@ const createHtml = (forWhat, item, toWhere) => {
 				<button type="button">
 					<i class="fa-solid fa-right-left"></i>
 				</button>
-				<button type="button" class="text-uppercase fw-bolder">Sepete
+				<button type="button" class="text-uppercase fw-bolder" id="btnAddToCart">Sepete
 					ekle</button>
 			</div>
 		</div>
   	`;
   }
   return toWhere.insertAdjacentHTML("afterbegin", html);
+};
+
+const setLocalStorage = (data) => {
+  localStorage.setItem(`cartcount`, JSON.stringify(data));
+};
+
+const getLocalStorage = () => {
+  const countdata = JSON.parse(localStorage.getItem(`cartcount`));
+  count = countdata == null ? 0 : countdata;
+  navbarCartCount.textContent = count;
 };
